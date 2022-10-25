@@ -1,3 +1,5 @@
+from termcolor import colored as coloured
+
 class entities ():
     """
     Contains building blocks for entities. 
@@ -50,7 +52,7 @@ class entities ():
 
     class lesson ():
         """
-        This is the building block for every timetable.
+        This is the building block for every timetable. \n
         Holds information about the teacher, the rooms, the teaching periods and the students.
         """
         def __init__(self, ID: str, name: str, teachers: list, periods_and_rooms: list, students: list, subject) -> None:
@@ -60,8 +62,8 @@ class entities ():
             self.periods_and_rooms = periods_and_rooms
             self.students = students
             self.subject = subject
+        
 
-            
 
 def main ():
     pass
