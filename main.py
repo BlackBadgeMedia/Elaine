@@ -28,7 +28,7 @@ class entities ():
         """
         Holds information about individual subjects. e.g. physY9
         """
-        def __init__ (self, ID: str, name: str, possible_teaching_periods: tuple, possible_rooms: tuple, how_many_teaching_periods: int, min_students: str, max_students: int, multiple_periods: bool = False) -> None:
+        def __init__ (self, ID: str, name: str, possible_teaching_periods: tuple, possible_rooms: tuple, how_many_teaching_periods: int, min_students: str, max_students: int, number_of_teachers: int, multiple_periods: bool = False) -> None:
             self.ID = ID 
             self.name = name
             self.possible_teaching_periods = possible_teaching_periods  # what times of the day can a subject be taught e.g. [YP1, GP5]
@@ -36,6 +36,7 @@ class entities ():
             self.multiple_periods = multiple_periods # does the lesson need 1 or 2 periods to teach. For example 6th form chemistry takes up 2 periods.
             self.min_students = min_students # the mininum number of student required for this subject
             self.max_students = max_students # the maximum number of students needed for this subject
+            self.number_of_teachers = number_of_teachers
             self.how_many_teaching_periods = how_many_teaching_periods # the number of teaching periods the subject requires per cycle
 
     class room ():
@@ -46,6 +47,19 @@ class entities ():
             self.ID = ID
             self.name = name
             self.max_capacity = max_capacity # the maximum number of students that can be taught in this room
+
+    class lesson ():
+        """
+        This is the building block for every timetable.
+        Holds information about the teacher, the rooms, the teaching periods and the students.
+        """
+        def __init__(self, ID: str, name: str, teachers: list, periods_and_rooms: list, students: list, subject) -> None:
+            self.ID = ID
+            self.name = name
+            self.teachers = teachers
+            self.periods_and_rooms = periods_and_rooms
+            self.students = students
+            self.subject = subject
 
             
 
