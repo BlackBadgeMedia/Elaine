@@ -62,10 +62,8 @@ class entities ():
             self.periods_and_rooms = periods_and_rooms
             self.students = students
             self.subject = subject
-        
 
-
-def main ():
+def main () -> None:
     pass
 
 
