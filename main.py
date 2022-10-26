@@ -20,6 +20,9 @@ class entities ():
             Collects information about students from a specified file.\n
             It then converts that data to objects then stores them in a list.
             """
+
+            print('Loading students...')
+
             students = []
 
             with open(input_file, 'r') as file: # opens input file note: there is no data cleansing so input data must be clean
@@ -35,6 +38,8 @@ class entities ():
                         subjects = tuple(info[3].split(', ')),  # splits the last section into a list and then a tuple because a student can have multiple subjects
                     )
                 )
+
+            print(f"{coloured('Loading Complete!', 'green', attrs = ['bold'])}")
 
             return tuple(students) 
 
@@ -63,6 +68,38 @@ class entities ():
             self.forename = forename
             self.subjects_they_can_teach = subjects_they_can_teach # these are the subjects the teacher can teach e.g. mathY10set2a
             self.working_periods = working_periods  # these are the periods the teachers are working e.g. cycle1TUESp5
+
+        def load_teachers (input_file: str) -> tuple:
+            """
+            Collects information about teachers from a specified file.\n
+            It then converts that data to objects then stores them in a list.
+            """
+
+            print('Loading teachers...')
+
+            teachers = []
+
+            with open(input_file, 'r') as file: 
+                lines = file.read().split('\n')
+
+            for line in lines:
+                info = line.split(' | ')
+
+                teachers.append(
+                    entities.teacher(
+                        ID = info[0],
+                        surname = info[1],
+                        forename = info[2],
+                        subjects_they_can_teach = tuple(info[3].split(', ')),
+                        working_periods = tuple(info[4].split(', ')),
+                    )
+                )
+
+            print(f"{coloured('Loading Complete!', 'green', attrs=['bold'])}")
+
+            return tuple(teachers)
+
+
 
     class subject ():
         """
@@ -93,16 +130,19 @@ class entities ():
         This is the building block for every timetable. \n
         Holds information about the teacher, the rooms, the teaching periods and the students.
         """
-        def __init__(self, ID: str, name: str, teachers: list, periods_and_rooms: list, students: list, subject) -> None:
+        def __init__(self, ID: str, name: str, teachers: list, periods_and_rooms: list, students: list, subjectID: str) -> None:
             self.ID = ID
             self.name = name
             self.teachers = teachers
             self.periods_and_rooms = periods_and_rooms
             self.students = students
-            self.subject = subject
+            self.subjectID = subjectID
 
 def main () -> None:
+
     students = entities.student.load_students('students.txt')
+    teachers = entities.teacher.load_teachers('teachers.txt')
+
 
 
 if __name__ == '__main__':
