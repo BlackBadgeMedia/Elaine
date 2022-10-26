@@ -19,13 +19,32 @@ def count_students_in_subjects (students: list) -> dict:
 
     return num_of_students_in_subjects
             
-def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects: list) -> list:
+def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects: tuple) -> list:
     """
     Finds out which subjects the program should place in the timetable first. \n
-    This is to speed up the algortith. \n
+    This is to speed up the algortithm. \n
     Returns a list with the order in which the program should place subjects. 
     """
     subject_placement_priority = []
+
+    # places subject priority based on frequency
+    for i in dict(sorted(num_of_students_in_subjects.items(), key = lambda x:x[1], reverse = True)):
+        subject_placement_priority.append(i)
+
+    subjects_with_2_periods = []
+    # finds out which subjects need two periods
+    for subject in subjects:
+        if subject.multiple_periods:
+            subjects_with_2_periods.append(subject.ID)
+
+    # moves all subjects that need 2 periods to the front of the priority 
+    for target_value in subjects_with_2_periods:
+        subject_placement_priority.remove(target_value)
+        subject_placement_priority.insert(0, target_value)
+
+
+
+    
 
     return subject_placement_priority
 
@@ -35,8 +54,6 @@ def main () -> None:
     teachers = entities.teacher.load_teachers('teachers.txt')
     subjects = entities.subject.load_subjects('subjects.txt')
     rooms = entities.room.load_rooms('rooms.txt')
-
-    print(count_students_in_subjects(students))
 
 
 if __name__ == '__main__':
