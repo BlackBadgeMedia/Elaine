@@ -118,7 +118,7 @@ class entities ():
         """
         Holds information about individual subjects. e.g. physY9
         """
-        def __init__ (self, ID: str, name: str, possible_teaching_periods: tuple, possible_rooms: tuple, how_many_teaching_periods: int, min_students: str, max_students: int, number_of_teachers: int, multiple_periods: bool = False) -> None:
+        def __init__ (self, ID: str, name: str, possible_teaching_periods: tuple, possible_rooms: tuple, how_many_teaching_periods: int, min_students: int, max_students: int, number_of_teachers: int, multiple_periods: bool = False) -> None:
             self.ID = ID 
             self.name = name
             self.possible_teaching_periods = possible_teaching_periods  # what times of the day can a subject be taught e.g. [YP1, GP5]
@@ -129,6 +129,38 @@ class entities ():
             self.number_of_teachers = number_of_teachers
             self.how_many_teaching_periods = how_many_teaching_periods # the number of teaching periods the subject requires per cycle
 
+        def load_subjects (input_file: str) -> tuple:
+            """
+            Collects information about different subjects from the specified file.
+            """
+
+            print('Loading subjects...')
+
+            subjects = []
+
+            with open(input_file, 'r') as file:
+                lines = file.read().split('\n')
+
+            for line in lines:
+                info = line.split(' | ')
+
+                subjects.append(
+                    entities.subject(
+                        ID = info[0],
+                        name = info[1],
+                        possible_teaching_periods = tuple(info[2].split(', ')),
+                        possible_rooms = tuple(info[3].split(', ')),
+                        how_many_teaching_periods = int(info[4]),
+                        min_students = int(info[5]),
+                        max_students = int(info[6]),
+                        number_of_teachers = int(info[7]),
+                        multiple_periods = bool(info[8]),
+                    )
+                )
+            
+            print(coloured('Loading Complete!', 'green', attrs = ['bold']))
+
+            return tuple(subjects)
     class room ():
         """
         Holds information about rooms.
