@@ -15,6 +15,31 @@ class entities ():
             self.forename = forename
             self.subjects = subjects # these are the subjects the student has chosen to take e.g. chemY13
 
+        def load_students (input_file: str) -> tuple:
+            """
+            Collects information about students from a specified file.\n
+            It then converts that data to objects then stores them in a list.
+            """
+            students = []
+
+            with open(input_file, 'r') as file: # opens input file note: there is no data cleansing so input data must be clean
+                lines = file.read().split('\n')  # splits input file into individual lines
+
+            for line in lines: 
+                info = line.split(' | ')  # splits the line into sections based on ' | '
+                students.append(
+                    entities.student(
+                        ID = info[0],
+                        surname = info[1],
+                        forename = info[2],
+                        subjects = tuple(info[3].split(', ')),  # splits the last section into a list and then a tuple because a student can have multiple subjects
+                    )
+                )
+
+            return tuple(students) 
+
+
+
     class teacher ():
         """
         Holds information about individual teachers.
@@ -64,7 +89,7 @@ class entities ():
             self.subject = subject
 
 def main () -> None:
-    pass
+    students = entities.student.load_students('students.txt')
 
 
 if __name__ == '__main__':
