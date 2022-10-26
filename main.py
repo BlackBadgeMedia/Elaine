@@ -18,7 +18,8 @@ def count_students_in_subjects (students: list) -> dict:
                 num_of_students_in_subjects[subject] = 1
 
     return num_of_students_in_subjects
-            
+
+
 def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects: tuple) -> list:
     """
     Finds out which subjects the program should place in the timetable first. \n
@@ -42,11 +43,45 @@ def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects
         subject_placement_priority.remove(target_value)
         subject_placement_priority.insert(0, target_value)
 
-
-
-    
-
     return subject_placement_priority
+
+def create_blank_timetable () -> list:
+    blank_timetable = [
+        [ # week 1
+            [ #MON
+                ['', '', '', '', ''] # p1, p2, p3, p4, p5
+            ],
+            [ #TUE
+                ['', '', '', '', '']
+            ],
+            [ #WED
+                ['', '', '', '', '']
+            ],
+            [ #THU
+                ['', '', '', '', '']
+            ],
+            [ #FRI
+                ['', '', '', '', '']
+            ],
+        ],
+        [ # week 2
+            [ #MON
+                ['', '', '', '', '']
+            ],
+            [ #TUE
+                ['', '', '', '', '']
+            ],
+            [ #WED
+                ['', '', '', '', '']
+            ],
+            [ #THU
+                ['', '', '', '', '']
+            ],
+            [ #FRI
+                ['', '', '', '', '']
+            ],
+        ],
+    ]
 
 def main () -> None:
     print('Starting...')
