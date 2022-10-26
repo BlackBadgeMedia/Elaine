@@ -1,3 +1,7 @@
+"""
+For creating identities.
+"""
+
 from termcolor import colored as coloured
 
 class entities ():
@@ -161,6 +165,25 @@ class entities ():
             print(coloured('Loading Complete!', 'green', attrs = ['bold']))
 
             return tuple(subjects)
+
+        def display_info (*args) -> None:
+            """
+            Displays information about the subjects.
+            """
+            for i in args:
+                print('-------------------------------')
+                print(f'ID: {coloured(i.ID, "blue", attrs = ["bold"])}')
+                print(f'Name: {coloured(i.name, "blue", attrs = ["bold"])}')
+                print(f'Possible teaching periods: {coloured(i.possible_teaching_periods, "blue", attrs = ["bold"])}')
+                print(f'Possible rooms: {coloured(i.possible_rooms, "blue", attrs = ["bold"])}')
+                print(f'How many teaching periods: {coloured(i.how_many_teaching_periods, "blue", attrs = ["bold"])}')
+                print(f'Min students: {coloured(i.min_students, "blue", attrs = ["bold"])}')
+                print(f'Max students: {coloured(i.max_students, "blue", attrs = ["bold"])}')
+                print(f'Number of teachers: {coloured(i.number_of_teachers, "blue", attrs = ["bold"])}')
+                print(f'Multiple periods: {coloured(i.multiple_periods, "blue", attrs = ["bold"])}')
+                print('-------------------------------')
+
+
     class room ():
         """
         Holds information about rooms.
@@ -169,6 +192,12 @@ class entities ():
             self.ID = ID
             self.name = name
             self.max_capacity = max_capacity # the maximum number of students that can be taught in this room
+
+        def load_rooms (input_file) -> tuple:
+            """
+            Loads the different rooms from the specified input file. 
+            """
+            
 
     class lesson ():
         """
@@ -182,3 +211,11 @@ class entities ():
             self.periods_and_rooms = periods_and_rooms
             self.students = students
             self.subjectID = subjectID
+
+
+
+def main () -> None:
+    pass
+
+if __name__ == '__main__':
+    main()
