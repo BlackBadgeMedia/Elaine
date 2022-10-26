@@ -2,7 +2,7 @@
 
 Timetable creation and management software
 
-Contributers
+Contributers (English please oscar)
 -Oscar
 
 Please make sure to write clear code.
