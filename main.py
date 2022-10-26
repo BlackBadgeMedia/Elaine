@@ -1,6 +1,6 @@
 from entities import entities
 
-def count_students_in_subjects (students) -> dict:
+def count_students_in_subjects (students: list) -> dict:
     """
     Works out how many people take each subject. \n
     This is to workout which subjects are most popular to speed up \n
@@ -19,6 +19,15 @@ def count_students_in_subjects (students) -> dict:
 
     return num_of_students_in_subjects
             
+def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects: list) -> list:
+    """
+    Finds out which subjects the program should place in the timetable first. \n
+    This is to speed up the algortith. \n
+    Returns a list with the order in which the program should place subjects. 
+    """
+    subject_placement_priority = []
+
+    return subject_placement_priority
 
 def main () -> None:
     print('Starting...')
