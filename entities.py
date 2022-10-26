@@ -193,11 +193,32 @@ class entities ():
             self.name = name
             self.max_capacity = max_capacity # the maximum number of students that can be taught in this room
 
-        def load_rooms (input_file) -> tuple:
+        def load_rooms (input_file: str) -> tuple:
             """
             Loads the different rooms from the specified input file. 
             """
+            print('Loading subjects...')
+
+            rooms = []
+
+            with open(input_file, 'r') as file:
+                lines = file.read().split('\n')
+
+            for line in lines:
+                info = line.split(' | ')
+
+                rooms.append(
+                    entities.room(
+                        ID = info[0],
+                        name = info[1],
+                        max_capacity = int(info[2])
+                    )
+                )
             
+            print(coloured('Loading Complete!', 'green', attrs = ['bold']))
+
+            return tuple(rooms)
+
 
     class lesson ():
         """
@@ -216,6 +237,7 @@ class entities ():
 
 def main () -> None:
     pass
+
 
 if __name__ == '__main__':
     main()
