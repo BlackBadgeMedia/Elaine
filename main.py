@@ -99,6 +99,19 @@ class entities ():
 
             return tuple(teachers)
 
+        def display_info (*args) -> None:
+            """
+            Displays the information about one or more teachers.
+            """
+            for i in args:
+                print('-------------------------------')
+                print(f'ID: {coloured(i.ID, "cyan", attrs = ["bold"])}')
+                print(f'Surname: {coloured(i.surname, "cyan", attrs = ["bold"])}')
+                print(f'Forename: {coloured(i.forename, "cyan", attrs = ["bold"])}')
+                print(f'Subjects they can teach: {coloured(i.subjects_they_can_teach, "cyan", attrs = ["bold"])}')
+                print(f'Working periods: {coloured(i.working_periods, "cyan", attrs = ["bold"])}')
+                print('-------------------------------')
+
 
 
     class subject ():
@@ -142,7 +155,6 @@ def main () -> None:
 
     students = entities.student.load_students('students.txt')
     teachers = entities.teacher.load_teachers('teachers.txt')
-
 
 
 if __name__ == '__main__':
