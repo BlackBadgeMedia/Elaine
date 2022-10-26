@@ -219,6 +219,17 @@ class entities ():
 
             return tuple(rooms)
 
+        def display_info (*args) -> None:
+            """
+            Displays information about the rooms.
+            """
+            for i in args:
+                print('-------------------------------')
+                print(f'ID: {coloured(i.ID, "yellow", attrs = ["bold"])}')
+                print(f'Name: {coloured(i.name, "yellow", attrs = ["bold"])}')
+                print(f'Max capacity: {coloured(i.max_capacity, "yellow", attrs = ["bold"])}')
+                print('-------------------------------')
+
 
     class lesson ():
         """
@@ -233,11 +244,23 @@ class entities ():
             self.students = students
             self.subjectID = subjectID
 
+        def display_info (*args) -> None:
+            """
+            Displays information about lessons and teaching groups.
+            """
+            for i in args:
+                print('-------------------------------')
+                print(f'ID: {coloured(i.ID, "red", attrs = ["bold"])}')
+                print(f'Name: {coloured(i.name, "red", attrs = ["bold"])}')
+                print(f'Teacher(s): {coloured(i.teachers, "red", attrs = ["bold"])}')
+                print(f'Periods and rooms: {coloured(i.periods_and_rooms, "red", attrs = ["bold"])}')
+                print(f'Students: {coloured(i.students, "red", attrs = ["bold"])}')
+                print(f'Subject ID: {coloured(i.subjectID, "red", attrs = ["bold"])}')
+                print('-------------------------------')           
 
 
 def main () -> None:
     pass
-
 
 if __name__ == '__main__':
     main()
