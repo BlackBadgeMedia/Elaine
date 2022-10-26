@@ -82,8 +82,16 @@ def create_blank_timetable () -> list:
             ],
         ],
     ]
-
     return blank_timetable
+
+def place_subject (timetable, subject, location: str) -> list:
+    """
+    Places a subject in the timetable. 
+    """
+    
+
+    return timetable
+
 
 def main () -> None:
     print('Starting...')
@@ -92,7 +100,6 @@ def main () -> None:
     subjects = entities.subject.load_subjects('subjects.txt')
     rooms = entities.room.load_rooms('rooms.txt')
     print('All information loaded.')
-
 
 
 if __name__ == '__main__':
