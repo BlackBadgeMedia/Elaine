@@ -1,5 +1,5 @@
 """
-For creating identities.
+For creating entities.
 """
 
 from termcolor import colored as coloured
@@ -197,7 +197,7 @@ class entities ():
             """
             Loads the different rooms from the specified input file. 
             """
-            print('Loading subjects...')
+            print('Loading rooms...')
 
             rooms = []
 
