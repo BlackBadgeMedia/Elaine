@@ -38,6 +38,19 @@ class entities ():
 
             return tuple(students) 
 
+        def display_info (*args) -> None:
+            """
+            Displays the information of one or more students at a time.
+            """
+
+            for i in args:
+                print('-------------------------------')
+                print(f'ID: {coloured(i.ID, "magenta", attrs = ["bold"])}')
+                print(f'Surname: {coloured(i.surname, "magenta", attrs = ["bold"])}')
+                print(f'Forename: {coloured(i.forename, "magenta", attrs = ["bold"])}')
+                print(f'Subjects: {coloured(i.subjects, "magenta", attrs = ["bold"])}')
+                print('-------------------------------')
+
 
 
     class teacher ():
