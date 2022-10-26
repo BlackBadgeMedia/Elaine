@@ -49,39 +49,41 @@ def create_blank_timetable () -> list:
     blank_timetable = [
         [ # week 1
             [ #MON
-                ['', '', '', '', ''] # p1, p2, p3, p4, p5
+                [], [], [], [], [], # p1, p2, p3, p4, p5,
             ],
             [ #TUE
-                ['', '', '', '', '']
+                [], [], [], [], [],   
             ],
             [ #WED
-                ['', '', '', '', '']
+                [], [], [], [], [], 
             ],
             [ #THU
-                ['', '', '', '', '']
+                [], [], [], [], [],  
             ],
             [ #FRI
-                ['', '', '', '', '']
+                [], [], [], [], [],
             ],
         ],
         [ # week 2
             [ #MON
-                ['', '', '', '', '']
+                [], [], [], [], [],
             ],
             [ #TUE
-                ['', '', '', '', '']
+                [], [], [], [], [],
             ],
             [ #WED
-                ['', '', '', '', '']
+                [], [], [], [], [],                
             ],
             [ #THU
-                ['', '', '', '', '']
+                [], [], [], [], [],                
             ],
             [ #FRI
-                ['', '', '', '', '']
+                [], [], [], [], [],
             ],
         ],
     ]
+
+    return blank_timetable
 
 def main () -> None:
     print('Starting...')
@@ -89,6 +91,8 @@ def main () -> None:
     teachers = entities.teacher.load_teachers('teachers.txt')
     subjects = entities.subject.load_subjects('subjects.txt')
     rooms = entities.room.load_rooms('rooms.txt')
+    print('All information loaded.')
+
 
 
 if __name__ == '__main__':
