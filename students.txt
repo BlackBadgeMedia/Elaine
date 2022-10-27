@@ -1,2 +1,2 @@
-ST0001 | Surapaneni | Rahul | fmY12, chemY12, physY12, epq
-ST0002 | Mcquitty | Oscar | fmY12, chemY12, physY12
+ST0000 | Aziz | Ridha | bioY12, chemY12, mathY12, esY12
+ST0001 | Malik | Danial | bioY12, chemY12, mathY12, esY12
