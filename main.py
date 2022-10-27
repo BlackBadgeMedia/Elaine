@@ -1,4 +1,7 @@
 from entities import entities
+from xlsx_to_txt import xlsx_to_txt  # thanks to Rahul for creating this
+
+from termcolor import colored as coloured
 from math import ceil
 
 def count_students_in_subjects (students: list) -> dict:
@@ -125,12 +128,21 @@ def place_subject (timetable: list, lesson, week: int, day: int, period: int) ->
 
 
 def main () -> None:
+    
     print('Starting...')
+
+    print('Converting spreadsheets to text...')
+    xlsx_to_txt()
+    print(coloured('Finished converting spreadsheets to text!', 'cyan'))
+
+    print('Loading infomation from text...')
     students = entities.student.load_students('students.txt')
     teachers = entities.teacher.load_teachers('teachers.txt')
     subjects = entities.subject.load_subjects('subjects.txt')
     rooms = entities.room.load_rooms('rooms.txt')
-    print('All information loaded.')
+    print(coloured('All information loaded!', 'magenta'))
+
+    print(coloured('Starting sequence finished!', 'cyan', 'on_magenta'))
 
     students_in_subjects = count_students_in_subjects (students)
     timetable = create_blank_timetable()
