@@ -1,7 +1,6 @@
 """
 For creating entities.
 """
-
 from termcolor import colored as coloured
 
 class entities ():
