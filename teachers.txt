@@ -1,2 +1,6 @@
-TR001 | Taylor | Stuart | scY7, scY8, chemY9, chemSEPY10, chemSEPY11, chemY12, chemY13 | w1MONp5, w2TUEp3
-TR002 | Al-Rubaiai | Teeba | csY10, csY11 | w1FRIp3, w2THUp4
+ID | surname | forename | subjects they can teach | working periods | None | 
+T000 | Taylor | Stuart | SEPchemY10, SEPchemY11, chemY12, chemY13 | * | note * means all periods | 
+T001 | Al-Rubaiai | Teeba | dstY8, csY9, csY10, csY11 | *w2 | None | 
+T002 | Fletcher | Símóné | scY7, scY8, phyY9, SEPphyY10, SEPphyY11 | w1TUESp5 | None | 
+T003 | Roskell | Elaine | mathsY11 | * | None | 
+T004 | Lago-Costa | Raquel | esY7, esY8 | w1FRIp2, w2MONp4 | None | 

@@ -1,2 +1,11 @@
-ST0001 | Surapaneni | Rahul | fmY12, chemY12, physY12, epq
-ST0002 | Mcquitty | Oscar | fmY12, chemY12, physY12
+ID | surname | forename | subjects chosen | 
+ST0000 | Aziz | Ridha | bioY12, chemY12, mathY12, esY12 | 
+ST0001 | Malik | Danial | bioY12, chemY12, mathY12, esY12 | 
+ST0002 | Barnett | Sam | chemY12, physY12, fmY12 | 
+ST0003 | Minhas | Rayaan | psyY12, busY12, polY12, cmathY12 | 
+ST0004 | Farooqi | Abdul-Ghani | polY12, bioY12, chemY12, mathY12 | 
+ST0005 | Kain | Arlo | sportBTECY12 | 
+ST0006 | Gibson | Sam | dtY12, physY12, mathY12 | 
+ST0007 | Adey | Ethan | busY12, econY12, psyY12 | 
+ST0008 | Moin | Ali | bioY12, chemY12, mathY12, polY12 | 
+ST0009 | Abaasi | Ammaar | sportBTECY12 | 

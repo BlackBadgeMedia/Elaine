@@ -1,1 +1,3 @@
-C2.1 | Christopher Simon Upstairs Room 1 | 24
+ID | name | max capacity | 
+L2.3 | Lockhart upstairs room 3 | 24 | 
+A1.2 | A block downstairs room 2 | 12 | 

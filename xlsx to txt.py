@@ -8,8 +8,7 @@ Use openpyxl to read data from the spreadsheet,
 Keep all of the program inside of functions so it can be accessed as an import from "main.py"
 """
 
-from openpyxl import Workbook
-import pandas as pd
+from openpyxl import load_workbook
 
 
 # write you main code in here.
@@ -18,14 +17,20 @@ def xlsx_to_txt () -> None:
     Reads the input spreadsheet and converts each page into text.
     Saves in individual text files.
     """
-    read_file = pd.read_excel('IO\input.xlsx') #input file (xlsx)
-    read_file.to_csv("test.csv", #output file (csv)
-                     index=None, #no index
-                     header=False) #no header
-    with open('test.csv', 'r') as f_in, open('students.txt', 'w') as f_out: #opens input (csv) and output (txt) file
-        content = f_in.read().replace(',', ' | ') #replaces commas with '|'
-        f_out.write(content) #writes to output file
+    
+files = ['students.txt', 'teachers.txt', 'subjects.txt', 'rooms.txt'] #file name to output to
 
+for i in range(4):
+    wb = load_workbook("IO\input.xlsx") #opens input.xlsx
+    wb.active=wb.worksheets[i]
+    sheet = wb.active
+    maxRow = sheet.max_row
+    maxColumn=sheet.max_column
+    for x in range(1, maxRow + 1):
+        for y in range(1, maxColumn +1):
+            cell_obj = sheet.cell(row=x, column=y)
+            print(cell_obj.value, end=' | ', file=open(files[i], 'a'))
+        print('', file=open(files[i], 'a'))
 
 # write code in here if you only want it to be accessed when this file is run directly, not as an import
 def main () -> None:
