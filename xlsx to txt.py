@@ -11,7 +11,7 @@ Keep all of the program inside of functions so it can be accessed as an import f
 from openpyxl import load_workbook
 
 
-# write you main code in here.
+
 def xlsx_to_txt () -> None:
     """
     Reads the input spreadsheet and converts each page into text.
