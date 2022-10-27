@@ -32,7 +32,8 @@ def xlsx_to_txt() -> None:
             for y in range(1, maxColumn +1): #iterates through columns
                 cell_obj = sheet.cell(row=x, column=y) #selects cell
                 print(cell_obj.value, end=' | ', file=open(files[i], 'a')) #prints cell
-            print('', file=open(files[i], 'a')) #newline
+            if x < maxRow: 
+                print('', file=open(files[i], 'a')) #newline
 
 # write code in here if you only want it to be accessed when this file is run directly, not as an import
 def main () -> None:
