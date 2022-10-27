@@ -26,7 +26,7 @@ for i in range(4):
     sheet = wb.active
     maxRow = sheet.max_row
     maxColumn=sheet.max_column
-    for x in range(1, maxRow + 1):
+    for x in range(2, maxRow + 1):
         for y in range(1, maxColumn +1):
             cell_obj = sheet.cell(row=x, column=y)
             print(cell_obj.value, end=' | ', file=open(files[i], 'a'))

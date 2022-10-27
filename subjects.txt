@@ -1,3 +1,2 @@
-ID | name | possible teaching periods | possible rooms | multiple periods | min student | max students | number of teachers | how many teaching periods | 
 chemY12 | Year 12 chemistry | w1TUEp1, w2FRIp4 | L2.2, L2.3 | True | 6 | 12 | 2 | 10 | 
 mathsY13 | Year 13 maths | * | D1.2, D2.1 | False | 1 | 12 | 2 | 8 | 

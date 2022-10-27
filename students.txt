@@ -1,4 +1,3 @@
-ID | surname | forename | subjects chosen | 
 ST0000 | Aziz | Ridha | bioY12, chemY12, mathY12, esY12 | 
 ST0001 | Malik | Danial | bioY12, chemY12, mathY12, esY12 | 
 ST0002 | Barnett | Sam | chemY12, physY12, fmY12 | 
