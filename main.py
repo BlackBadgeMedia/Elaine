@@ -111,7 +111,6 @@ def main () -> None:
     placement_priority = find_subject_placement_priority(num_of_students_in_subjects, subjects)
 
     
-
 if __name__ == '__main__':
     main ()
 
