@@ -107,10 +107,16 @@ def main () -> None:
 
     timetable = create_blank_timetable()
 
-    num_of_students_in_subjects = count_students_in_subjects(students)
-    placement_priority = find_subject_placement_priority(num_of_students_in_subjects, subjects)
+    for student in students:
+        entities.student.display_info(student)
+    for teacher in teachers:
+        entities.teacher.display_info(teacher)
+    for subject in subjects:
+        entities.subject.display_info(subject)
+    for room in rooms:
+        entities.room.display_info(room)
 
-    
+
 if __name__ == '__main__':
     main ()
 
