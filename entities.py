@@ -1,7 +1,6 @@
 """
 For creating entities.
 """
-
 from termcolor import colored as coloured
 
 class entities ():
@@ -61,7 +60,6 @@ class entities ():
                 print('-------------------------------')
 
 
-
     class teacher ():
         """
         Holds information about individual teachers.
@@ -115,7 +113,6 @@ class entities ():
                 print(f'Subjects they can teach: {coloured(i.subjects_they_can_teach, "cyan", attrs = ["bold"])}')
                 print(f'Working periods: {coloured(i.working_periods, "cyan", attrs = ["bold"])}')
                 print('-------------------------------')
-
 
 
     class subject ():

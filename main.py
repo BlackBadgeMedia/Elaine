@@ -1,4 +1,5 @@
 from entities import entities
+from math import ceil
 
 def count_students_in_subjects (students: list) -> dict:
     """
@@ -45,6 +46,31 @@ def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects
 
     return subject_placement_priority
 
+
+def find_teaching_group_size (subjects: list, students_in_subjects: dict) -> dict:
+    """
+    Find how many teaching groups are needed per subject and what the ideal group size for each teaching group would be. \n
+    Returns a dictionary - {'subject name': ['num of groups', 'ideal num of students per group']} \n
+    """
+
+    teaching_group_sizes = {}
+
+    for subject in students_in_subjects: # for subject in dict: students in subjects
+        students_who_take_subject = students_in_subjects[subject]  # the num of students who take that subject
+
+        for i in subjects:  # for subject[class] in subjects[list of classes] 
+            if i.name == subject:   # if the name of the subject matches the name of the class
+
+                # checks if the number of students who take the class is within min and max students
+                if i.min_students <= students_who_take_subject and i.max_students >= students_who_take_subject: 
+                    teaching_group_sizes[subject] = [1, students_who_take_subject]  # if true will set the numbers of teaching groups to 1 and the number of students who take that subject
+                else:
+                    num_of_groups = ceil(students_who_take_subject / i.max_students) # finds the number of groups if they have max students, rounds up
+                    teaching_group_sizes[subject] = [num_of_groups, ceil(students_who_take_subject / num_of_groups)]
+        
+    return teaching_group_sizes
+        
+
 def create_blank_timetable () -> list:
     blank_timetable = [
         [ # week 1
@@ -84,6 +110,7 @@ def create_blank_timetable () -> list:
     ]
     return blank_timetable
 
+
 def place_subject (timetable: list, lesson, week: int, day: int, period: int) -> list:
     """
     Places a subject in the timetable. 
@@ -105,12 +132,25 @@ def main () -> None:
     rooms = entities.room.load_rooms('rooms.txt')
     print('All information loaded.')
 
+    students_in_subjects = count_students_in_subjects (students)
     timetable = create_blank_timetable()
 
-    num_of_students_in_subjects = count_students_in_subjects(students)
-    placement_priority = find_subject_placement_priority(num_of_students_in_subjects, subjects)
+    for student in students:
+        entities.student.display_info(student)
+    for teacher in teachers:
+        entities.teacher.display_info(teacher)
+    for subject in subjects:
+        entities.subject.display_info(subject)
+    for room in rooms:
+        entities.room.display_info(room)
 
-    
+    print(students_in_subjects)
+
+    print(find_teaching_group_size(subjects, students_in_subjects))
+
+
+
+
 
 if __name__ == '__main__':
     main ()
