@@ -84,10 +84,15 @@ def create_blank_timetable () -> list:
     ]
     return blank_timetable
 
-def place_subject (timetable: list, subject, week: int, day: int, period: int) -> list:
+def place_subject (timetable: list, lesson, week: int, day: int, period: int) -> list:
     """
     Places a subject in the timetable. 
     """
+    p = timetable[week][day][period]   # locations the period the lesson needs to be placed in
+    p.append(lesson)
+
+    timetable[week][day][period] = p # places period back into timetable
+
     return timetable
 
 
@@ -102,12 +107,10 @@ def main () -> None:
 
     timetable = create_blank_timetable()
 
-    print(timetable)
+    num_of_students_in_subjects = count_students_in_subjects(students)
+    placement_priority = find_subject_placement_priority(num_of_students_in_subjects, subjects)
 
-    timetable = place_subject(timetable, 'maths', 0, 2, 4)
-
-    print(timetable)
-
+    
 
 if __name__ == '__main__':
     main ()
