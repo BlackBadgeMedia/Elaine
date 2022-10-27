@@ -20,12 +20,12 @@ def xlsx_to_txt () -> None:
     
     files = ['students.txt', 'teachers.txt', 'subjects.txt', 'rooms.txt'] #txt file name to output to
 
-    for i in range(4):
+    for i in range(4): #iterates through excel sheets
         wb = load_workbook("IO\input.xlsx") #opens input.xlsx
-        wb.active=wb.worksheets[i] #selects sheet i
-        sheet = wb.active
-        maxRow = sheet.max_row #finds final row
-        maxColumn=sheet.max_column #finds final column
+        wb.active=wb.worksheets[i] #assigns sheet i
+        sheet = wb.active #selects sheet i
+        maxRow = sheet.max_row #assigns final row
+        maxColumn=sheet.max_column #asssigns final column
         for x in range(2, maxRow + 1): #iterates through rows
             for y in range(1, maxColumn +1): #iterates through columns
                 cell_obj = sheet.cell(row=x, column=y) #selects cell
