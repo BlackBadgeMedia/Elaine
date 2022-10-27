@@ -1,2 +1,14 @@
 L2.3 | Lockhart upstairs room 3 | 24 | 
 A1.2 | A block downstairs room 2 | 12 | 
+D1.2 | Derby downstairs room 2 | 20 | 
+D2.1 | Derby upstairs room 1 | 20 | 
+L2.2 | Lockhart upstairs room 2 | 24 | 
+A2.2 | A block upstairs room 2 | 24 | 
+M3.5 | Main 3rd floor room 5 | 20 | 
+M3.15 | Main 3rd floor room 15 | 20 | 
+D2.3 | Derby upstairs room 3 | 20 | 
+T1.3 | DT downstairs room 3 | 12 | 
+C2.5 | Christophersimon upstairs room 5  | 20 | 
+C2.4 | Christophersimon upstairs room 4 | 24 | 
+L1.2 | Lockhart downstairs room 2 | 28 | 
+L1.1 | Lockhart downstairs room 1 | 28 | 

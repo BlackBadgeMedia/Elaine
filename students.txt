@@ -1,2 +1,51 @@
-ST0001 | Surapaneni | Rahul | fmY12, chemY12, physY12, epq
-ST0002 | Mcquitty | Oscar | fmY12, chemY12, physY12
+ST0000 | Aziz | Ridha | bioY12, chemY12, mathY12, esY12 | 
+ST0001 | Malik | Danial | bioY12, chemY12, mathY12, esY12 | 
+ST0002 | Barnett | Sam | chemY12, physY12, fmY12 | 
+ST0003 | Minhas | Rayaan | psyY12, busY12, polY12, cmathY12 | 
+ST0004 | Farooqi | Abdul-Ghani | polY12, bioY12, chemY12, mathY12 | 
+ST0005 | Kain | Arlo | sportBTECY12 | 
+ST0006 | Gibson | Sam | dtY12, physY12, mathY12 | 
+ST0007 | Adey | Ethan | busY12, econY12, psyY12 | 
+ST0008 | Moin | Ali | bioY12, chemY12, mathY12, polY12 | 
+ST0009 | Abaasi | Ammaar | sportBTECY12 | 
+ST0010 | Chong | Oscar | chemY12, physY12, fmY12 | 
+ST0011 | Surnapenini | Rahul | chemY12, physY12, fmY12 | 
+ST0012 | Bradley | James | bioY12, chemY12, mathY12, esY12 | 
+ST0013 | Wall | Charlie | bioY12, chemY12, mathY12, esY12 | 
+ST0014 | Hayes | Daniel | chemY12, physY12, fmY12 | 
+ST0015 | Shaikh | Zaina | psyY12, busY12, polY12, cmathY12 | 
+ST0016 | Crawford | Eva | polY12, bioY12, chemY12, mathY12 | 
+ST0017 | Allan | Jocelyn | sportBTECY12 | 
+ST0018 | Hyde | Ruby | dtY12, physY12, mathY12 | 
+ST0019 | Mayers | Emma | busY12, econY12, psyY12 | 
+ST0020 | Ismali | Maya | bioY12, chemY12, mathY12, polY12 | 
+ST0021 | Clare | Lisette | sportBTECY12 | 
+ST0022 | Remmington | Bettie | bioY12, chemY12, mathY12, esY12 | 
+ST0023 | Barlow | Tiger | bioY12, chemY12, mathY12, esY12 | 
+ST0024 | Crossley | Freya | chemY12, physY12, fmY12 | 
+ST0025 | Alexander  | Daniel | psyY12, busY12, polY12, cmathY12 | 
+ST0026 | Weitherm | Shoshana | polY12, bioY12, chemY12, mathY12 | 
+ST0027 | Padovani | Bruno | sportBTECY12 | 
+ST0028 | Sharman | Oscar | dtY12, physY12, mathY12 | 
+ST0029 | Chapman | Cameron | busY12, econY12, psyY12 | 
+ST0030 | Barber | Annie | bioY12, chemY12, mathY12, polY12 | 
+ST0031 | Bracewell | Millie | sportBTECY12 | 
+ST0032 | Rubert | Jacob | bioY12, chemY12, mathY12, esY12 | 
+ST0033 | Gort | Francesca | bioY12, chemY12, mathY12, esY12 | 
+ST0034 | Bollingbrooke | Teix | chemY12, physY12, fmY12 | 
+ST0035 | Oman | Maisie | psyY12, busY12, polY12, cmathY12 | 
+ST0036 | Malik-Imran | Abdul | polY12, bioY12, chemY12, mathY12 | 
+ST0037 | Russell | Holly | sportBTECY12 | 
+ST0038 | Hassan | Mustafa | dtY12, physY12, mathY12 | 
+ST0039 | Hassan | Abdallah | busY12, econY12, psyY12 | 
+ST0040 | Davies | Oliver | bioY12, chemY12, mathY12, polY12 | 
+ST0041 | Kers | Roy | sportBTECY12 | 
+ST0042 | Woolf | Daniel | bioY12, chemY12, mathY12, esY12 | 
+ST0043 | Pattinson | Madelyn | bioY12, chemY12, mathY12, esY12 | 
+ST0044 | Phillips | Den | chemY12, physY12, fmY12 | 
+ST0045 | Riaz | Esa | psyY12, busY12, polY12, cmathY12 | 
+ST0046 | Mason | Elsa | polY12, bioY12, chemY12, mathY12 | 
+ST0047 | Hibbile | Anais | sportBTECY12 | 
+ST0048 | Lander | Daniel | dtY12, physY12, mathY12 | 
+ST0049 | Dow | Antonia | busY12, econY12, psyY12 | 
+ST0050 | Malpas-Ellam | Eva | bioY12, chemY12, mathY12, polY12 | 

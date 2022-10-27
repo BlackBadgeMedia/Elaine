@@ -11,7 +11,7 @@ Keep all of the program inside of functions so it can be accessed as an import f
 from openpyxl import load_workbook
 
 
-def xlsx_to_txt () -> None:
+def xlsx_to_txt() -> None:
 
     """
     Reads the input spreadsheet and converts each page into text.
@@ -21,6 +21,8 @@ def xlsx_to_txt () -> None:
     files = ['students.txt', 'teachers.txt', 'subjects.txt', 'rooms.txt'] #txt file name to output to
 
     for i in range(4): #iterates through excel sheets
+        file_to_delete = open(files[i], 'w')
+        file_to_delete.close() #clears txt file
         wb = load_workbook("IO\input.xlsx") #opens input.xlsx
         wb.active=wb.worksheets[i] #assigns sheet i
         sheet = wb.active #selects sheet i
@@ -38,3 +40,5 @@ def main () -> None:
 
 if __name__ == '__main__':
     main ()
+
+xlsx_to_txt()
