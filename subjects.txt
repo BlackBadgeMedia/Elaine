@@ -1,12 +1,12 @@
-chemY12 | Year 12 chemistry | w1TUEp1, w2FRIp4 | L2.2, L2.3 | True | 6 | 12 | 2 | 10 | 
-mathY12 | Year 12 maths | * | D1.2, D2.1 | False | 1 | 12 | 2 | 10 | 
-busY12 | Year 12 business | * | M3.5, M3.15 | None | 6 | 12 | 2 | 10 | 
-polY12 | Year 12 politics | * | M3.5, M3.15 | None | 6 | 12 | 2 | 10 | 
-psyY12 | Year 12 psychology | * | M3.5, M3.15 | None | 6 | 12 | 2 | 10 | 
-physY12 | Year 12 physics | w1TUEp1, w2FRIp4 | L1.1, L1.2 | None | 6 | 12 | 2 | 10 | 
-econY12 | Year 12 economics | * | M3.5, M3.15 | None | 6 | 12 | 2 | 10 | 
-dtY12 | Year 12 design technology | * | T1.3 | None | 6 | 12 | 2 | 10 | 
-sportBTECY12 | Year 12 sport Btec | * | C2.4, C2.5 | None | 1 | 12 | 2 | 10 | 
-cmathY12 | Year 12 core maths | w1TUEp1, w2FRIp4 | D1.2, D2.1 | None | 1 | 12 | 2 | 10 | 
-bioY12 | Year 12 biology | * | A2.2, L2.2 | None | 6 | 12 | 2 | 10 | 
-fmY12 | Year 12 further maths | * | D1.2, D2.1 | None | 1 | 20 | 3 | 15 | 
+chemY12 | Year 12 chemistry | w1TUEp1, w2FRIp4 | L2.2, L2.3 | true | 6 | 12 | 2 | 10 | 
+mathY12 | Year 12 maths | * | D1.2, D2.1 | false | 1 | 12 | 2 | 10 | 
+busY12 | Year 12 business | * | M3.5, M3.15 | false | 6 | 12 | 2 | 10 | 
+polY12 | Year 12 politics | * | M3.5, M3.15 | false | 6 | 12 | 2 | 10 | 
+psyY12 | Year 12 psychology | * | M3.5, M3.15 | false | 6 | 12 | 2 | 10 | 
+physY12 | Year 12 physics | w1TUEp1, w2FRIp4 | L1.1, L1.2 | true | 6 | 12 | 2 | 10 | 
+econY12 | Year 12 economics | * | M3.5, M3.15 | false | 6 | 12 | 2 | 10 | 
+dtY12 | Year 12 design technology | * | T1.3 | true | 6 | 12 | 2 | 10 | 
+sportBTECY12 | Year 12 sport Btec | * | C2.4, C2.5 | true | 1 | 12 | 2 | 10 | 
+cmathY12 | Year 12 core maths | w1TUEp1, w2FRIp4 | D1.2, D2.1 | false | 1 | 12 | 2 | 10 | 
+bioY12 | Year 12 biology | * | A2.2, L2.2 | true | 6 | 12 | 2 | 10 | 
+fmY12 | Year 12 further maths | * | D1.2, D2.1 | false | 1 | 20 | 3 | 15 | 

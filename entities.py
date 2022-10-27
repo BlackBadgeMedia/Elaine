@@ -151,11 +151,11 @@ class entities ():
                         name = info[1],
                         possible_teaching_periods = tuple(info[2].split(', ')),
                         possible_rooms = tuple(info[3].split(', ')),
-                        how_many_teaching_periods = int(info[4]),
+                        how_many_teaching_periods = int(info[8]),
                         min_students = int(info[5]),
                         max_students = int(info[6]),
                         number_of_teachers = int(info[7]),
-                        multiple_periods = bool(info[8]),
+                        multiple_periods = bool(info[4]),
                     )
                 )
             

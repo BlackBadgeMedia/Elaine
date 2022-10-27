@@ -1,6 +1,6 @@
 T000 | Taylor | Stuart | SEPchemY10, SEPchemY11, chemY12, chemY13 | * | note * means all periods | 
 T001 | Al-Rubaiai | Teeba | dstY8, csY9, csY10, csY11 | *w2 | None | 
-T002 | Fletcher | Símóné | scY7, scY8, phyY9, SEPphyY10, SEPphyY11, physY12 | w1TUESp5 | None | 
+T002 | Fletcher | Sï¿½mï¿½nï¿½ | scY7, scY8, phyY9, SEPphyY10, SEPphyY11, physY12 | w1TUESp5 | None | 
 T003 | Roskell | Elaine | mathsY11, mathY12, cmathY12, fmY12 | * | None | 
 T004 | Lago-Costa | Raquel | esY7, esY8, esY12 | w1FRIp2, w2MONp4 | None | 
 T005 | Tarnowski | Louise  | SEPbioY10, SEPbioY11, bioY12, bioY13 | * | None | 

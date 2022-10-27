@@ -36,9 +36,8 @@ def xlsx_to_txt() -> None:
 
 # write code in here if you only want it to be accessed when this file is run directly, not as an import
 def main () -> None:
-    pass
+    xlsx_to_txt()
 
 if __name__ == '__main__':
     main ()
 
-xlsx_to_txt()
