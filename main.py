@@ -62,7 +62,7 @@ def find_teaching_group_size (subjects: list, students_in_subjects: dict) -> dic
         students_who_take_subject = students_in_subjects[subject]  # the num of students who take that subject
 
         for i in subjects:  # for subject[class] in subjects[list of classes] 
-            if i.name == subject:   # if the name of the subject matches the name of the class
+            if i.ID == subject:   # if the name of the subject matches the name of the class
 
                 # checks if the number of students who take the class is within min and max students
                 if i.min_students <= students_who_take_subject and i.max_students >= students_who_take_subject: 
