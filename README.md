@@ -1,11 +1,11 @@
 # Elaine
-
 Timetable creation and management software
 
-Contributers (English please oscar) \n
-|Oscar [lead]
-|Rahul [co-coder]
-|Sam   [research and infomation gatherer]
+##Contributers
+
+|**Oscar** [lead]
+|**Rahul** [co-coder]
+|**Sam**   [research and infomation gatherer]
 
 Please make sure to write clear code.
 Also make sure to write lots of comments. 
