@@ -1,7 +1,7 @@
 # Elaine
 Timetable creation and management software
 
-##Contributers
+## Contributers
 
 |**Oscar** [lead]
 |**Rahul** [co-coder]
@@ -23,4 +23,3 @@ ID | Surname | Forename | Subjects (separated by ', ')
 
 teachers.txt
 ID | Surname | Forename | Subjects they can teach (separated by ', ') | Working periods (separated by ', ')
-
