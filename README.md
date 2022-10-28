@@ -2,7 +2,7 @@
 
 Timetable creation and management software
 
-Contributers (English please oscar)
+Contributers (English please oscar) \n
 |Oscar [lead]
 |Rahul [co-coder]
 |Sam   [research and infomation gatherer]
