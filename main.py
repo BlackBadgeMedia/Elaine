@@ -1,7 +1,9 @@
+from re import L
+from time import time
 from entities import entities
 from xlsx_to_txt import xlsx_to_txt  # thanks to Rahul for creating this
 
-from termcolor import colored as coloured
+from termcolor import colored as coloured, cprint
 from math import ceil
 
 def count_students_in_subjects (students: list) -> dict:
@@ -36,6 +38,8 @@ def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects
     for i in dict(sorted(num_of_students_in_subjects.items(), key = lambda x:x[1], reverse = True)):
         subject_placement_priority.append(i)
 
+
+    """
     subjects_with_2_periods = []
     # finds out which subjects need two periods
     for subject in subjects:
@@ -46,6 +50,7 @@ def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects
     for target_value in subjects_with_2_periods:
         subject_placement_priority.remove(target_value)
         subject_placement_priority.insert(0, target_value)
+    """
 
     return subject_placement_priority
 
@@ -144,9 +149,8 @@ def main () -> None:
 
     print(coloured('Starting sequence finished!', 'cyan', 'on_magenta'))
 
-    students_in_subjects = count_students_in_subjects (students)
-    timetable = create_blank_timetable()
-
+    """
+    print('Displaying all information...')
     for student in students:
         entities.student.display_info(student)
     for teacher in teachers:
@@ -155,10 +159,34 @@ def main () -> None:
         entities.subject.display_info(subject)
     for room in rooms:
         entities.room.display_info(room)
+    """
 
-    print(students_in_subjects)
+    students_in_subjects = count_students_in_subjects (students) # finds the number of students who take each subject
+    print(f'Number of students in each subject: {students_in_subjects}')
 
-    print(find_teaching_group_size(subjects, students_in_subjects))
+    print(f"{coloured('Ideal num of teaching group and size', attrs = ['bold', 'underline'])} : {find_teaching_group_size(subjects, students_in_subjects)}")
+
+    placement_priority = find_subject_placement_priority(students_in_subjects, subjects)  # atm this is based on subject popularity, this could lead to the program being less effient
+    print(f'Subject placement priority [note: needs fixing to increase efficiency]: {placement_priority}')
+
+
+    print('Creating blank timetable...')
+    timetable = create_blank_timetable()  # creates a blank timetable
+    cprint('Blank timetable created!')
+
+
+    LGcounter = 0000
+    for subject in placement_priority: # iterates through the subjectt in order of placement priority
+
+        for x, week in enumerate(timetable):
+            for y, day in enumerate(timetable):
+                for z, period in enumerate(timetable):
+
+                    place_subject(timetable, )
+                    LGcounter += 1
+        
+
+
 
 
 
