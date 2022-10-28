@@ -3,9 +3,9 @@
 Timetable creation and management software
 
 Contributers (English please oscar)
--Oscar 
--Rahul
--Sam
+|Oscar [lead]
+|Rahul [co-coder]
+|Sam   [research and infomation gatherer]
 
 Please make sure to write clear code.
 Also make sure to write lots of comments. 
