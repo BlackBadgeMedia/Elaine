@@ -135,7 +135,6 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
     """
     Creates a completely random timetable that may or may not work. 
     """
-    LGcounter = 0 # this is the ID of the lessons created
 
     list_subjects = []
     for i in subjects:
@@ -147,12 +146,15 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
             student_subject = (f'{student.forename} {student.surname}', subject)   # creates a student subject pair
             students_subjects.append(student_subject)   # appends the pair to a list
 
+    '''
     teachers_subjects = [] # a list of tuples containing teacher subject pairs
     for teacher in teachers:
         for subject in teacher.subjects_they_can_teach: # iterates through each subject the teacher can teach
             teacher_subject = (f'{teacher.forename} {teacher.surname}', subject) # creates a teacher subject pair
             teachers_subjects.append(teacher_subject) # appedn the pair to a list
+    '''
 
+    LGcounter = 0 # this is the ID of the lessons created
     while True:
 
         print('Picking random subject...')
@@ -173,6 +175,7 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 if subject in subjects_left_to_place: # if the subject is still not fully placed
                     subject_ready = True  # subject ready = True so while loop is ended
 
+        LGcounter += 1
                 
         print(f'Random subject picked : {subject.name}')
 
@@ -207,6 +210,21 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 print('Nope!')
 
         cprint(f'Students found : {students_for_LG}', 'green')
+
+        print('LG created!!!')
+
+        num_of_p_for_LG = int(subject.how_many_teaching_periods)
+
+        print(f'{subject.name} needs {num_of_p_for_LG} periods.')
+        print('Placing lessons for LG...')
+
+        while num_of_p_for_LG != 0:
+            p = subject.possible_teaching_periods[randint(len(0, subject.possible_teaching_periods))]
+
+
+
+
+
             
                 
                 
