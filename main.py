@@ -1,5 +1,11 @@
 from entities import entities
+from xlsx_to_txt import xlsx_to_txt  # thanks to Rahul for creating this
+
+from random import randint, shuffle 
+import random
+from termcolor import colored as coloured, cprint
 from math import ceil
+
 
 def count_students_in_subjects (students: list) -> dict:
     """
@@ -33,6 +39,8 @@ def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects
     for i in dict(sorted(num_of_students_in_subjects.items(), key = lambda x:x[1], reverse = True)):
         subject_placement_priority.append(i)
 
+
+    """
     subjects_with_2_periods = []
     # finds out which subjects need two periods
     for subject in subjects:
@@ -43,6 +51,7 @@ def find_subject_placement_priority (num_of_students_in_subjects: dict, subjects
     for target_value in subjects_with_2_periods:
         subject_placement_priority.remove(target_value)
         subject_placement_priority.insert(0, target_value)
+    """
 
     return subject_placement_priority
 
@@ -59,7 +68,7 @@ def find_teaching_group_size (subjects: list, students_in_subjects: dict) -> dic
         students_who_take_subject = students_in_subjects[subject]  # the num of students who take that subject
 
         for i in subjects:  # for subject[class] in subjects[list of classes] 
-            if i.name == subject:   # if the name of the subject matches the name of the class
+            if i.ID == subject:   # if the name of the subject matches the name of the class
 
                 # checks if the number of students who take the class is within min and max students
                 if i.min_students <= students_who_take_subject and i.max_students >= students_who_take_subject: 
@@ -123,18 +132,167 @@ def place_subject (timetable: list, lesson, week: int, day: int, period: int) ->
     return timetable
 
 
+def create_random_timetable (timetable: list, students: list, teachers: list, subjects: list, rooms: list) -> list:
+    """
+    Creates a completely random timetable that may or may not work. 
+    """
+
+    list_subjects = []
+    for i in subjects:
+        list_subjects.append(i.ID) # creates a list of subject IDs. e.g. sciY8
+
+    students_subjects = []  # a list of tuples containing student subject pairs. e.g. (Rahul, physY12)
+    for student in students:   
+        for subject in student.subjects:  # iterates through each subject the student takes
+            student_subject = (f'{student.forename} {student.surname}', subject)   # creates a student subject pair
+            students_subjects.append(student_subject)   # appends the pair to a list
+
+    '''
+    teachers_subjects = [] # a list of tuples containing teacher subject pairs
+    for teacher in teachers:
+        for subject in teacher.subjects_they_can_teach: # iterates through each subject the teacher can teach
+            teacher_subject = (f'{teacher.forename} {teacher.surname}', subject) # creates a teacher subject pair
+            teachers_subjects.append(teacher_subject) # appedn the pair to a list
+    '''
+
+    LGcounter = 0 # this is the ID of the lessons created
+    while True:
+
+        print('Picking random subject...')
+        subject_ready = False
+        while subject_ready is False:
+
+            if students_subjects == []: # checks if all subject have been placed
+                print('No subjects left to place! Random timetable complete!!!')
+                return timetable  # returns the randomly generated timetable
+
+            else:
+                subject = subjects[randint(0, len(subjects)-1)] # picks a random subject out of the list: subjects
+
+                subjects_left_to_place = []
+                for i in students_subjects: # for student subject pair in ...
+                    subjects_left_to_place.append(i[1]) # append subject to list
+                
+                if subject.ID in subjects_left_to_place: # if the subject is still not fully placed
+                    subject_ready = True  # subject ready = True so while loop is ended
+                    print(f'{subject.ID} chosen!')
+                else:
+                    print('Nope!')
+
+        LGcounter += 1
+                
+        print(f'Random subject picked : {subject.name}')
+
+        teachers_for_LG = []
+
+        print('Finding random teachers for subject...')
+        def rand ():
+            return randint(0,10) / 10
+        for teacher in set(teachers): # iterates through teachers in a random order
+            print(f'Checking : {teacher.forename} {teacher.surname}')
+
+            # checks if the LG already has enough teachers and if the teacher can teach that subject
+            if len(teachers_for_LG) != subject.number_of_teachers and subject.ID in teacher.subjects_they_can_teach:
+                teachers_for_LG.append(teacher)
+                cprint(f'{teacher.forename} {teacher.surname} successfully added to lesson group!', 'green')
+            else:
+                print('Nope!')
+
+        cprint(f'Teachers found : {teachers_for_LG}', 'green')
+
+        students_for_LG = []
+
+        print('Finding student for LG...')
+
+        while len(students_for_LG) < subject.max_students: # whil;e the LG is not full
+            poss_stud_pair = students_subjects[randint(0, len(students_subjects)-1)] #picks a random student subject pair
+            print(f'Checking : {poss_stud_pair[0]}...')
+            
+            if poss_stud_pair[1] == subject.ID: # if the subject = the ID of the subject
+                students_for_LG.append(poss_stud_pair[0])  # add student to teaching group
+                cprint(f'{poss_stud_pair[0]} Succefully added to lesson group!', 'green')
+                students_subjects.remove(poss_stud_pair)  # remove student subject pair from student subject pairs
+            else:
+                print('Nope!')
+
+        cprint(f'Students found : {students_for_LG}', 'green')
+
+        print('LG created!!!')
+
+        num_of_p_for_LG = int(subject.how_many_teaching_periods) # the number of periods the subject needs
+
+        print(f'{subject.name} needs {num_of_p_for_LG} periods.')
+        print('Placing lessons for LG...')
+
+        subjects_pos_placed = [] # a list of the positions a subject has been placed
+        LG_pos = [] # the positions and rooms of the subject in the timetable
+        while num_of_p_for_LG != 0:
+            p = subject.possible_teaching_periods[randint(0, len(subject.possible_teaching_periods)-1)]
+
+            room = subject.possible_rooms[randint(0, len(subject.possible_rooms)-1)]
+            print(f'Checking {p} {room}')
+
+            if p not in subjects_pos_placed:
+                LG_pos.append((p, room))
+                cprint(f'{subject.ID} placed {room} at {p}!', 'magenta')
+                num_of_p_for_LG -= 1 # one less leson to place
+            else:
+                print('Nope!')
+
+        lesson = entities.lesson(   # creating the lesson object
+                ID = f'LG{LGcounter}',
+                name = subject.name,
+                teachers = teachers_for_LG,
+                periods_and_rooms = LG_pos,
+                students = students_for_LG,
+                subjectID = subject.ID,
+                )
+        cprint('Lesson created!', 'green', attrs = ['bold'])
+        entities.lesson.display_info(lesson)
+
+        print('Placing lessons in timetable...')
+
+        days = {
+            'MON': 0,
+            'TUE': 1,
+            'WED': 2,
+            'THU': 3,
+            'FRI': 4
+            }
+        for i in LG_pos:
+            p = i[0]
+            room = i[1]
+            place_subject(
+                timetable,
+                lesson,
+                week = (int(p[1])-1),
+                day = days[p[2:5]],
+                period = int(p[6]),
+            )
+            print(f'{subject.ID} placed {room} at {p} in timetable!')
+            
+        
+
 
 def main () -> None:
-    print('Starting...')
+    
+    print('Starting...') # starting sequence: collects data from spreadsheet
+
+    print('Converting spreadsheets to text...')
+    xlsx_to_txt()
+    print(coloured('Finished converting spreadsheets to text!', 'cyan'))
+
+    print('Loading infomation from text...')  # converts text information to classes
     students = entities.student.load_students('students.txt')
     teachers = entities.teacher.load_teachers('teachers.txt')
     subjects = entities.subject.load_subjects('subjects.txt')
     rooms = entities.room.load_rooms('rooms.txt')
-    print('All information loaded.')
+    print(coloured('All information loaded!', 'magenta'))
 
-    students_in_subjects = count_students_in_subjects (students)
-    timetable = create_blank_timetable()
+    print(coloured('Starting sequence finished!', 'cyan', 'on_magenta'))
 
+    """
+    print('Displaying all information...')
     for student in students:
         entities.student.display_info(student)
     for teacher in teachers:
@@ -143,15 +301,23 @@ def main () -> None:
         entities.subject.display_info(subject)
     for room in rooms:
         entities.room.display_info(room)
+    """
 
-    print(students_in_subjects)
+    students_in_subjects = count_students_in_subjects (students) # finds the number of students who take each subject
+    print(f'Number of students in each subject: {students_in_subjects}')
 
-    print(find_teaching_group_size(subjects, students_in_subjects))
+    print(f"{coloured('Ideal num of teaching group and size', attrs = ['bold', 'underline'])} : {find_teaching_group_size(subjects, students_in_subjects)}")
+
+    placement_priority = find_subject_placement_priority(students_in_subjects, subjects)  # atm this is based on subject popularity, this could lead to the program being less effient
+    print(f'Subject placement priority [note: needs fixing to increase efficiency]: {placement_priority}')
 
 
+    print('Creating blank timetable...')
+    timetable = create_blank_timetable()  # creates a blank timetable
+    cprint('Blank timetable created!')
 
+    print(create_random_timetable(timetable, list(students), list(teachers), list(subjects), list(rooms)))
 
 
 if __name__ == '__main__':
     main ()
-
