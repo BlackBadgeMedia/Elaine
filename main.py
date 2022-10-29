@@ -2,6 +2,7 @@ from entities import entities
 from xlsx_to_txt import xlsx_to_txt  # thanks to Rahul for creating this
 
 from random import randint, shuffle 
+import random
 from termcolor import colored as coloured, cprint
 from math import ceil
 
@@ -166,14 +167,17 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 return timetable  # returns the randomly generated timetable
 
             else:
-                subject = subject[randint(0, len(subject)-1)] # picks a random subject out of the list: subjects
+                subject = subjects[randint(0, len(subject)-1)] # picks a random subject out of the list: subjects
 
                 subjects_left_to_place = []
-                for i in student_subject: # for student subject pair in ...
+                for i in students_subjects: # for student subject pair in ...
                     subjects_left_to_place.append(i[1]) # append subject to list
                 
-                if subject in subjects_left_to_place: # if the subject is still not fully placed
+                if subject.ID in subjects_left_to_place: # if the subject is still not fully placed
                     subject_ready = True  # subject ready = True so while loop is ended
+                    print(f'{subject.ID} chosen!')
+                else:
+                    print('Nope!')
 
         LGcounter += 1
                 
@@ -182,13 +186,15 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
         teachers_for_LG = []
 
         print('Finding random teachers for subject...')
-        for teacher in shuffle(teachers): # iterates through teachers in a random order
+        def rand ():
+            return randint(0,10) / 10
+        for teacher in set(teachers): # iterates through teachers in a random order
             print(f'Checking : {teacher.forename} {teacher.surname}')
 
             # checks if the LG already has enough teachers and if the teacher can teach that subject
-            if len(teachers_for_LG) != subject.number_of_teachers and teacher.subjects_they_can_teach == subject.ID:
+            if len(teachers_for_LG) != subject.number_of_teachers and subject.ID in teacher.subjects_they_can_teach:
                 teachers_for_LG.append(teacher)
-                cprint(f'{teacher.forename} {teacher.surname} Successful added to lesson group!', 'green')
+                cprint(f'{teacher.forename} {teacher.surname} successfully added to lesson group!', 'green')
             else:
                 print('Nope!')
 
@@ -198,12 +204,12 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
 
         print('Finding student for LG...')
 
-        while len(students_for_LG) > subject.max_students: # whil;e the LG is not full
-            poss_stud_pair = students_subjects[randint[0, len(students_subjects)-1]] #picks a random student subject pair
+        while len(students_for_LG) < subject.max_students: # whil;e the LG is not full
+            poss_stud_pair = students_subjects[randint(0, len(students_subjects)-1)] #picks a random student subject pair
             print(f'Checking : {poss_stud_pair[0]}...')
             
             if poss_stud_pair[1] == subject.ID: # if the subject = the ID of the subject
-                students_for_LG.append(poss_stud_pair[1])  # add student to teaching group
+                students_for_LG.append(poss_stud_pair[0])  # add student to teaching group
                 cprint(f'{poss_stud_pair[0]} Succefully added to lesson group!', 'green')
                 students_subjects.remove(poss_stud_pair)  # remove student subject pair from student subject pairs
             else:
@@ -213,26 +219,59 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
 
         print('LG created!!!')
 
-        num_of_p_for_LG = int(subject.how_many_teaching_periods)
+        num_of_p_for_LG = int(subject.how_many_teaching_periods) # the number of periods the subject needs
 
         print(f'{subject.name} needs {num_of_p_for_LG} periods.')
         print('Placing lessons for LG...')
 
+        subjects_pos_placed = [] # a list of the positions a subject has been placed
+        LG_pos = [] # the positions and rooms of the subject in the timetable
         while num_of_p_for_LG != 0:
-            p = subject.possible_teaching_periods[randint(len(0, subject.possible_teaching_periods))]
+            p = subject.possible_teaching_periods[randint(0, len(subject.possible_teaching_periods))]
 
+            room = shuffle(subject.possible_rooms)
+            print(f'Checking {p} {room}')
 
+            if p not in subjects_pos_placed:
+                LG_pos.append((p, room))
+                print(f'{subject.ID} placed {room} at {p}!')
+                num_of_p_for_LG -= 1 # one less leson to place
+            else:
+                print('Nope!')
 
+        lesson = entities.lesson(   # creating the lesson object
+                ID = f'LG{LGcounter}',
+                name = subject.name,
+                teachers = teachers_for_LG,
+                periods_and_rooms = LG_pos,
+                students = students_for_LG,
+                subjectID = subject.ID,
+                )
+        cprint('Lesson created!', 'green', attrs = ['bold'])
+        entities.lesson.display_info(lesson)
 
+        print('Placing lessons in timetable...')
 
+        days = {
+            'MON': 0,
+            'TUE': 1,
+            'WED': 2,
+            'THU': 3,
+            'FRI': 4
+            }
+        for i in LG_pos:
+            p = i[0]
+            room = i[1]
+            place_subject(
+                timetable,
+                lesson,
+                week = int(p[1])-1,
+                day = days[p[2:5]],
+                period = int(p[6]),
+            )
+            print(f'{subject.ID} placed {room} at {p} in timetable!')
             
-                
-                
         
-    
-
-    
-
 
 
 def main () -> None:
@@ -276,6 +315,8 @@ def main () -> None:
     print('Creating blank timetable...')
     timetable = create_blank_timetable()  # creates a blank timetable
     cprint('Blank timetable created!')
+
+    print(create_random_timetable(timetable, list(students), list(teachers), list(subjects), list(rooms)))
 
 
 if __name__ == '__main__':
