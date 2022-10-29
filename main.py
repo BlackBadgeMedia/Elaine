@@ -227,14 +227,14 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
         subjects_pos_placed = [] # a list of the positions a subject has been placed
         LG_pos = [] # the positions and rooms of the subject in the timetable
         while num_of_p_for_LG != 0:
-            p = subject.possible_teaching_periods[randint(0, len(subject.possible_teaching_periods))]
+            p = subject.possible_teaching_periods[randint(0, len(subject.possible_teaching_periods)-1)]
 
-            room = shuffle(subject.possible_rooms)
+            room = subject.possible_rooms[randint(0, len(subject.possible_rooms)-1)]
             print(f'Checking {p} {room}')
 
             if p not in subjects_pos_placed:
                 LG_pos.append((p, room))
-                print(f'{subject.ID} placed {room} at {p}!')
+                cprint(f'{subject.ID} placed {room} at {p}!', 'magenta')
                 num_of_p_for_LG -= 1 # one less leson to place
             else:
                 print('Nope!')
