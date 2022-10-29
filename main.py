@@ -167,7 +167,7 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 return timetable  # returns the randomly generated timetable
 
             else:
-                subject = subjects[randint(0, len(subject)-1)] # picks a random subject out of the list: subjects
+                subject = subjects[randint(0, len(subjects)-1)] # picks a random subject out of the list: subjects
 
                 subjects_left_to_place = []
                 for i in students_subjects: # for student subject pair in ...
@@ -265,7 +265,7 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
             place_subject(
                 timetable,
                 lesson,
-                week = int(p[1])-1,
+                week = (int(p[1])-1),
                 day = days[p[2:5]],
                 period = int(p[6]),
             )
