@@ -204,7 +204,7 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
 
         print('Finding student for LG...')
 
-        while len(students_for_LG) < subject.max_students: # whil;e the LG is not full
+        while len(students_for_LG) < subject.max_students: # whille the LG is not full
             poss_stud_pair = students_subjects[randint(0, len(students_subjects)-1)] #picks a random student subject pair
             print(f'Checking : {poss_stud_pair[0]}...')
             
