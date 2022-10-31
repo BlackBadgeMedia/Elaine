@@ -32,7 +32,7 @@ def xlsx_to_txt() -> None:
             for y in range(1, maxColumn +1): #iterates through columns
                 cell_obj = sheet.cell(row=x, column=y) #selects cell
                 if cell_obj.value == '*':
-                    cell_obj.value = 'w1MONp1,w1MONp2,w1MONp3,w1MONp4,w1MONp5,w1TUEp1,w1TUEp2,w1TUEp3,w1TUEp4,w1TUEp5,w1WEDp1,w1WEDp2,w1WEDp3,w1WEDp4,w1WEDp5,w1THUp1,w1THUp2,w1THUp3,w1THUp4,w1THUp5,w1FRIp1,w1FRIp2,w1FRIp3,w1FRIp4,w1FRIp5,w2MONp1,w2MONp2,w2MONp3,w2MONp4,w2MONp5,w2TUEp1,w2TUEp2,w2TUEp3,w2TUEp4,w2TUEp5,w2WEDp1,w2WEDp2,w2WEDp3,w2WEDp4,w2WEDp5,w2THUp1,w2THUp2,w2THUp3,w2THUp4,w2THUp5,w2FRIp1,w2FRIp2,w2FRIp3,w2FRIp4,w2FRIp5'
+                    cell_obj.value = 'w1MONp1, w1MONp2, w1MONp3, w1MONp4, w1MONp5, w1TUEp1, w1TUEp2, w1TUEp3, w1TUEp4, w1TUEp5, w1WEDp1, w1WEDp2, w1WEDp3, w1WEDp4, w1WEDp5, w1THUp1, w1THUp2, w1THUp3, w1THUp4, w1THUp5, w1FRIp1, w1FRIp2, w1FRIp3, w1FRIp4, w1FRIp5, w2MONp1, w2MONp2, w2MONp3, w2MONp4, w2MONp5, w2TUEp1, w2TUEp2, w2TUEp3, w2TUEp4, w2TUEp5, w2WEDp1, w2WEDp2, w2WEDp3, w2WEDp4, w2WEDp5, w2THUp1, w2THUp2, w2THUp3, w2THUp4, w2THUp5, w2FRIp1, w2FRIp2, w2FRIp3, w2FRIp4, w2FRIp5'
                 print(cell_obj.value, end=' | ', file=open(files[i], 'a')) #prints cell
             if x < maxRow: 
                 print('', file=open(files[i], 'a')) #newline

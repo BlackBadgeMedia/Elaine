@@ -161,7 +161,8 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
         print('Picking random subject...')
         subject_ready = False
         while subject_ready is False:
-
+            
+            print(students_subjects)
             if students_subjects == []: # checks if all subject have been placed
                 print('No subjects left to place! Random timetable complete!!!')
                 return timetable  # returns the randomly generated timetable
@@ -204,7 +205,8 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
 
         print('Finding student for LG...')
 
-        while len(students_for_LG) < subject.max_students: # whille the LG is not full
+        no_students_left = False
+        while len(students_for_LG) < subject.max_students and no_students_left == False: # whille the LG is not full and there are students left to place
             poss_stud_pair = students_subjects[randint(0, len(students_subjects)-1)] #picks a random student subject pair
             print(f'Checking : {poss_stud_pair[0]}...')
             
@@ -214,6 +216,14 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 students_subjects.remove(poss_stud_pair)  # remove student subject pair from student subject pairs
             else:
                 print('Nope!')
+
+                p_left = []  # pupils left
+                for i in students_subjects: # for student subject pair in students subjects pairs
+                    p_left.append(i[1]) # append subjetc
+
+                if subject.ID not in p_left:  # if no people left to place in subject
+                    no_students_left = True # end while loop
+
 
         cprint(f'Students found : {students_for_LG}', 'green')
 
@@ -267,7 +277,7 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 lesson,
                 week = (int(p[1])-1),
                 day = days[p[2:5]],
-                period = int(p[6]),
+                period = (int(p[6])-1),
             )
             print(f'{subject.ID} placed {room} at {p} in timetable!')
             
