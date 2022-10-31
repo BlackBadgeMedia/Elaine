@@ -162,7 +162,6 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
         subject_ready = False
         while subject_ready is False:
             
-            print(students_subjects)
             if students_subjects == []: # checks if all subject have been placed
                 print('No subjects left to place! Random timetable complete!!!')
                 return timetable  # returns the randomly generated timetable
@@ -207,7 +206,11 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
 
         no_students_left = False
         while len(students_for_LG) < subject.max_students and no_students_left == False: # whille the LG is not full and there are students left to place
-            poss_stud_pair = students_subjects[randint(0, len(students_subjects)-1)] #picks a random student subject pair
+            try:
+                poss_stud_pair = students_subjects[randint(0, len(students_subjects)-1)] #picks a random student subject pair
+            except ValueError:
+                break
+            
             print(f'Checking : {poss_stud_pair[0]}...')
             
             if poss_stud_pair[1] == subject.ID: # if the subject = the ID of the subject
