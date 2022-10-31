@@ -210,7 +210,7 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 poss_stud_pair = students_subjects[randint(0, len(students_subjects)-1)] #picks a random student subject pair
             except ValueError:
                 break
-            
+
             print(f'Checking : {poss_stud_pair[0]}...')
             
             if poss_stud_pair[1] == subject.ID: # if the subject = the ID of the subject
@@ -283,7 +283,81 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
                 period = (int(p[6])-1),
             )
             print(f'{subject.ID} placed {room} at {p} in timetable!')
+
+
+
+def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects: tuple, rooms:tuple) -> bool:
+    """
+    Checks to see if a timetable works. 
+    """
+    for x, week in enumerate(timetable):  # for week in timetable
+
+        for y, day in enumerate(week):    # for day in week
+            # find lessons that happen this day
+            lessons_this_day = []
+            for period in day:
+                for lesson in period:
+                    lessons_this_day.append(lesson.ID)
             
+            print(f'Lessons this day : {lessons_this_day}')
+            
+            # checks if lessons happen more than once in a day [except for lessons that need two consecutive periods]
+            print('Checking if lessons do not occur twice in one day...')
+            subjects_that_need_two_periods = []
+            for subject in subjects:
+                if subject.multiple_periods:
+                    subjects_that_need_two_periods.append(subject.ID)
+
+            lessons_that_need_two_periods = []
+            for lesson in period:
+                if lesson.subjectID in subjects_that_need_two_periods:
+                    lessons_that_need_two_periods.append(lesson.ID)  
+
+            lesson_counter = {}
+            for lesson in lessons_this_day:
+                if lesson_counter[lesson] == 1: lesson_counter[lesson] += 1      
+                else: lesson_counter[lesson] = 1
+            print(lesson_counter)
+
+            for lesson in lesson_counter:
+                if lesson_counter[lesson] > 2:
+                    cprint('Timetable failed!', 'red')
+                    return False
+                elif lesson_counter[lesson] > 1 and lesson not in lessons_that_need_two_periods:
+                    cprint('Timetable failed!', 'red')
+                    return False
+                
+
+
+            for z, period in enumerate(day):   # for period in day
+                # find the lessons that happen this period
+                lessons_this_period = []
+                for i, lesson in enumerate(period):
+                    lessons_this_period.append(lesson)
+
+
+                    # checks if double period lessons are accounted for 
+                    for subject in subjects: # for subject in subjects
+                        if subject.ID == lesson.subjectID:  # if subject ID of object == subjectID of lesson
+
+                            if subject.multiple_periods:   # if the subject needs two consecutive periods
+                                if z == 2:   # if the period is 3 return false. bc if the subject needs two consecutive periods it can't be p3
+                                    cprint('Timetable failed', 'red')
+                                    return False 
+                            
+                            elif lesson.ID not in day[z + 1]: # if the lesson group is not taught in the next period return false
+                                cprint('Timetable failed!', 'red')
+                                return False
+                    
+
+                    
+
+
+
+
+                    
+
+
         
 
 
@@ -330,6 +404,13 @@ def main () -> None:
     cprint('Blank timetable created!')
 
     print(create_random_timetable(timetable, list(students), list(teachers), list(subjects), list(rooms)))
+
+    # prints out the entire timetable
+    for week in timetable:
+        for day in week:
+            for period in day:
+                for i in period:
+                    entities.lesson.display_info(i)
 
 
 if __name__ == '__main__':
