@@ -33,7 +33,8 @@ def convert_nums_to_loc (week: int, day: int, period: int) -> str:
         4: 'p5',
     }
 
-    return f''
+    return f'{weeks[week]}{days[day]}{periods[period]}'
+
 
 def count_students_in_subjects (students: list) -> dict:
     """
@@ -313,7 +314,6 @@ def create_random_timetable (timetable: list, students: list, teachers: list, su
             print(f'{subject.ID} placed {room} at {p} in timetable!')
 
 
-
 def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects: tuple, rooms:tuple) -> bool:
     """
     Checks to see if a timetable works. 
@@ -390,7 +390,13 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
 
 
                             # checks if the room the lesson is overfilled
-                            pandroom = dict(lesson.periodsandrooms)
+                            for i, v in lesson.periodsandrooms:  # for period, room in periods and rooms
+                                for room in rooms:  # for room object in room objects
+                                    if room.ID == v:  # if the room ID equals the room the lesson is in
+                                        if len(lesson.students) > room.max_capacity:  # checks if the room is overfilled
+                                            cprint('Timetable failed!', 'red')
+                                            return False
+
 
                     
 
