@@ -6,6 +6,22 @@ import random
 from termcolor import colored as coloured, cprint
 from math import ceil
 
+def convert_nums_to_loc (week: int, day: int, period: int) -> str:
+    """
+    Converts the list indexes in a timetable to a string that humans can understand.
+    For example convert_nums_to_loc(0,0,0) = w1MONp1
+    """
+
+    weeks = {
+        0: 'w1',
+        1: 'w2',
+    }
+
+    days = {
+
+    
+    }
+
 
 def count_students_in_subjects (students: list) -> dict:
     """
@@ -336,10 +352,11 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                     lessons_this_period.append(lesson)
 
 
-                    # checks if double period lessons are accounted for 
+                    
                     for subject in subjects: # for subject in subjects
                         if subject.ID == lesson.subjectID:  # if subject ID of object == subjectID of lesson
-
+                            
+                            # checks if double period subjects are accounted for 
                             if subject.multiple_periods:   # if the subject needs two consecutive periods
                                 if z == 2:   # if the period is 3 return false. bc if the subject needs two consecutive periods it can't be p3
                                     cprint('Timetable failed', 'red')
@@ -348,6 +365,21 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                             elif lesson.ID not in day[z + 1]: # if the lesson group is not taught in the next period return false
                                 cprint('Timetable failed!', 'red')
                                 return False
+
+                            # checks if a lesson has more than its max capacity
+                            if len(lesson.students) > subject.max_students:
+                                cprint('Timetable failed!', 'red')
+                                return False
+
+                            #checks if the subject has less than its min capacity
+                            elif len(lesson.students) < subject.min_students:
+                                cprint('Timetable failed!', 'red')
+                                return False
+
+
+                            # checks if the room the lesson is overfilled
+                            pandroom = dict(lesson.periodsandrooms)
+
                     
 
                     
