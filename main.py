@@ -389,13 +389,19 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                                 return False
 
 
-                            # checks if the room the lesson is overfilled
+                            # checks if the room the lesson is overfilled and if a subject can be teached in a room
                             for i, v in lesson.periodsandrooms:  # for period, room in periods and rooms
                                 for room in rooms:  # for room object in room objects
                                     if room.ID == v:  # if the room ID equals the room the lesson is in
                                         if len(lesson.students) > room.max_capacity:  # checks if the room is overfilled
                                             cprint('Timetable failed!', 'red')
                                             return False
+
+                                # checks if a lesson can be taught in a specific room
+                                if v not in subject.possible_rooms:
+                                        cprint('Timetable failed!', 'red')
+                                        return False                                    
+                            
 
 
                     
