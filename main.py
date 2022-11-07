@@ -33,6 +33,8 @@ def convert_nums_to_loc (week: int, day: int, period: int) -> str:
         4: 'p5',
     }
 
+    return f''
+
 def count_students_in_subjects (students: list) -> dict:
     """
     Works out how many people take each subject. \n
