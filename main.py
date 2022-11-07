@@ -18,10 +18,20 @@ def convert_nums_to_loc (week: int, day: int, period: int) -> str:
     }
 
     days = {
-
-    
+        0: 'MON',
+        1: 'TUE',
+        2: 'WED',
+        3: 'THU',
+        4: 'FRI',
     }
 
+    periods = {
+        0: 'p1',
+        1: 'p2',
+        2: 'p3',
+        3: 'p4',
+        4: 'p5',
+    }
 
 def count_students_in_subjects (students: list) -> dict:
     """
