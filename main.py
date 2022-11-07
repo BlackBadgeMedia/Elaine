@@ -402,7 +402,7 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                                         cprint('Timetable failed!', 'red')
                                         return False                                    
                             
-                                
+                            
 
 
                     
