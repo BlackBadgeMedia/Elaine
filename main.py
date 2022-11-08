@@ -431,6 +431,15 @@ def display_lessongroup_timetable (timetable: list, lesson_group) -> None:
     Prints the timetable of a lesson group. \n
     This is easier for a human to understand.
     """
+
+    outL0 = f"|------------GREEN------------|-----------YELLOW------------|"
+    outL1 = f"| MON | TUE | WED | THU | FRI | MON | TUE | WED | THU | FRI |"
+    outL2 = f"|{}|"
+    outL3 = f""
+    outL4 = f""
+    outL5 = f""
+
+
                     
 
 
