@@ -421,11 +421,16 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                             # checks if lessons are not on the same day
                             
 
+
                             
 
 
                     
-
+def display_lessongroup_timetable (timetable: list, lesson_group) -> None:
+    """
+    Prints the timetable of a lesson group. \n
+    This is easier for a human to understand.
+    """
                     
 
 
