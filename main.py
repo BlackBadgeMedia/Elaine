@@ -6,6 +6,13 @@ import random
 from termcolor import colored as coloured, cprint
 from math import ceil
 
+def cprintIF (text: str, colour: str, attrs: list,  Print: bool) -> None:
+    if Print:
+        pass
+        
+    return
+
+
 def convert_nums_to_loc (week: int, day: int, period: int) -> str:
     """
     Converts the list indexes in a timetable to a string that humans can understand.
