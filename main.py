@@ -462,17 +462,17 @@ def display_lessongroup_timetable (timetable: list, lesson_group) -> None:
     w1WEDp4 = ''
     w1WEDp5 = ''
 
-    w2TUEp1 = ''
-    w2TUEp2 = ''
-    w2TUEp3 = ''
-    w2TUEp4 = ''
-    w2TUEp5 = ''
+    w2WEDp1 = ''
+    w2WEDp2 = ''
+    w2WEDp3 = ''
+    w2WEDp4 = ''
+    w2WEDp5 = ''
 
     outL0 = f"|------------GREEN------------|-----------YELLOW------------|"
     outL1 = f"| MON | TUE | WED | THU | FRI | MON | TUE | WED | THU | FRI |"
     outL2 = f"|{w1MONp1}|{w1MONp2}|{w1MONp3}|{w1MONp4}|{w1MONp5}|{w2MONp1}|{w2MONp2}|{w2MONp3}|{w2MONp4}|{w2MONp5}|"
     outL3 = f"|{w1TUEp1}|{w1TUEp2}|{w1TUEp3}|{w1TUEp4}|{w1TUEp5}|{w2TUEp1}|{w2TUEp2}|{w2TUEp3}|{w2TUEp4}|{w2TUEp5}|"
-    outL4 = f""
+    outL4 = f"|{w1WEDp1}|{w1WEDp2}|{w1WEDp3}|{w1WEDp4}|{w1WEDp5}|{w2WEDp1}|{w2WEDp2}|{w2WEDp3}|{w2WEDp4}|{w2WEDp5}|"
     outL5 = f""
 
 
