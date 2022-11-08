@@ -416,7 +416,11 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                                 if v not in subject.possible_rooms:
                                         cprint('Timetable failed!', 'red')
                                         return False                                    
+                        
+
+                            # checks if lessons are not on the same day
                             
+
                             
 
 
