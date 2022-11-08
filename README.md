@@ -1,7 +1,7 @@
 # Elaine
 Timetable creation and management software
 
-## Contributers (english please oscar)
+## Contributers 
 
 |**Oscar** [lead]
 |**Rahul** [co-coder]
