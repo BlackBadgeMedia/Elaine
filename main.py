@@ -6,13 +6,21 @@ import random
 from termcolor import colored as coloured, cprint
 from math import ceil
 
-def cprintIF (text: str, colour: str, attrs: list,  Print: bool) -> None:
-    if Print:
-        pass
+# Settings ------------------------------------------------- # 
+printALLinfo = True    # this prints all information at every step of the program, useful for debugging but is otherwise very messy
+printSOMEinfo = True   # this prints the data about finished groups, so still a lot but is tidier that printALLinfo
+printGUIonly = False   # this enables the GUI in the terminal, printALLinfo and printSOMEinfo must both be false for this to work
+# ---------------------------------------------------------- # 
+
+def cprintIF (text: str, colour: str, on_colour: str, attrs: list,  Print: bool) -> None:
+    """
+    Only prints if Print == True. \n
+    This is useful for debugging and print settings.
+    """
+
+    if Print: return cprint(text, colour, on_colour, attrs,)
         
-    return
-
-
+        
 def convert_nums_to_loc (week: int, day: int, period: int) -> str:
     """
     Converts the list indexes in a timetable to a string that humans can understand.
