@@ -432,9 +432,15 @@ def display_lessongroup_timetable (timetable: list, lesson_group) -> None:
     This is easier for a human to understand.
     """
 
+    w1MONp1 = ''
+    w1MONp2 = ''
+    w1MONp3 = ''
+    w1MONp4 = ''
+    w1MONp5 = ''
+
     outL0 = f"|------------GREEN------------|-----------YELLOW------------|"
     outL1 = f"| MON | TUE | WED | THU | FRI | MON | TUE | WED | THU | FRI |"
-    outL2 = f"|{}|"
+    outL2 = f"|{w1MONp1}|{w1MONp2}|{w1MONp3}|{w1MONp4}|{w1MONp5}|"
     outL3 = f""
     outL4 = f""
     outL5 = f""
