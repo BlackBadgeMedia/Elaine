@@ -19,8 +19,8 @@ def cprintIF (text: str, colour: str, on_colour: str, attrs: list,  Print: bool)
     """
 
     if Print: return cprint(text, colour, on_colour, attrs,)
-        
-        
+  
+    
 def convert_nums_to_loc (week: int, day: int, period: int) -> str:
     """
     Converts the list indexes in a timetable to a string that humans can understand.
@@ -369,7 +369,7 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                 elif lesson_counter[lesson] > 1 and lesson not in lessons_that_need_two_periods:
                     cprint('Timetable failed!', 'red')
                     return False
-                
+
 
 
             for z, period in enumerate(day):   # for period in day
