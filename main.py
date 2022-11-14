@@ -387,8 +387,9 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                                 return False   
 
                             # checks if the works this period
-                            if convert_nums_to_loc(x, y, z) in teacher.
-                    
+                            if convert_nums_to_loc(x, y, z) not in teacher.working_periods:
+                                cprint('Timetable failed!', 'red')
+                                return False                       
                     
                     for subject in subjects: # for subject in subjects
                         if subject.ID == lesson.subjectID:  # if subject ID of object == subjectID of lesson
