@@ -378,7 +378,14 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                 for i, lesson in enumerate(period):
                     lessons_this_period.append(lesson)
 
+                    for teacher in teachers:
+                        if teacher.name in lesson.teachers:
 
+                            #checks if the teacher can teach this lesson
+                            if lesson.subjectID not in teacher.subjects_they_can_teach:
+                                cprint('Timetable failed!', 'red')
+                                return False   
+                    
                     
                     for subject in subjects: # for subject in subjects
                         if subject.ID == lesson.subjectID:  # if subject ID of object == subjectID of lesson
@@ -415,10 +422,12 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                                 # checks if a lesson can be taught in a specific room
                                 if v not in subject.possible_rooms:
                                         cprint('Timetable failed!', 'red')
-                                        return False                                    
+                                        return False              
+
+                      
                         
 
-                            # checks if lessons are not on the same day
+                            
                             
 
 
