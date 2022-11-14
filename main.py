@@ -381,10 +381,13 @@ def check_timetable (timetable: list, students: tuple, teachers: tuple, subjects
                     for teacher in teachers:
                         if teacher.name in lesson.teachers:
 
-                            #checks if the teacher can teach this lesson
+                            # checks if the teacher can teach this lesson
                             if lesson.subjectID not in teacher.subjects_they_can_teach:
                                 cprint('Timetable failed!', 'red')
                                 return False   
+
+                            # checks if the works this period
+                            if convert_nums_to_loc(x, y, z) in teacher.
                     
                     
                     for subject in subjects: # for subject in subjects
